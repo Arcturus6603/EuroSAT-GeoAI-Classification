@@ -29,7 +29,7 @@ A GeoAI project for land cover classification using Sentinel-2 multispectral ima
 - **Confusion Matrix**:
   ![Confusion Matrix](confusion_matrix.png)
 - **Band Importance**:
-  ![Band Importance](band_importance.png)
+  ![Band Importance](rf_band_importance.png)
 
 ### Environment
 - Python 3.10
@@ -75,7 +75,7 @@ pip install -r requirements.txt
 - **混淆矩阵**：
   ![Confusion Matrix](confusion_matrix.png)
 - **波段重要性**：
-  ![Band Importance](band_importance.png)
+  ![Band Importance](rf_band_importance.png)
 
 ### 环境依赖
 - Python 3.10
