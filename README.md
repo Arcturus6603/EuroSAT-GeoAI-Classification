@@ -40,7 +40,8 @@ A GeoAI project for land cover classification using Sentinel-2 multispectral ima
 git clone https://github.com/Arcturus6603/EuroSAT-GeoAI-Classification.git
 cd EuroSAT-GeoAI-Classification
 pip install -r requirements.txt
-# Download EuroSATallBands and change path
+# Download data and change path
+#The data comes from https://opendatalab.com/OpenDataLab/EuroSAT
 ```
 
 ### Future Work
@@ -86,7 +87,8 @@ pip install -r requirements.txt
 git clone https://github.com/Arcturus6603/EuroSAT-GeoAI-Classification.git
 cd EuroSAT-GeoAI-Classification
 pip install -r requirements.txt
-# 下载 EuroSATallBands 并修改路径
+# 下载数据并修改路径
+# 数据来源于https://opendatalab.com/OpenDataLab/EuroSAT
 ```
 
 ### 未来计划
