@@ -149,5 +149,15 @@ top_bands = np.argsort(band_importance)[::-1][:5]
 print("\nTop 5 Most Important Bands(0-based indexing):")
 for b in top_bands:
     print(f"Band{b+1}:Importance {band_importance[b]:.4f}")
-
+'''
+from sklearn import tree
+import matplotlib.pyplot as plt
+plt.figure(figsize=(15,10))
+tree.plot_tree(clf.estimators_[0],
+               max_depth=3,
+               feature_names=[f'f{i}' for i in range(53248)],
+               class_names=CLASSES,
+               filled=True)
+plt.show()
+'''
 print("\nFinished")
