@@ -1,5 +1,0 @@
-numpy
-rasterio
-scikit-learn
-matplotlib
-seaborn
