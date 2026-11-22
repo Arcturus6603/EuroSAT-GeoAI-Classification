@@ -22,7 +22,7 @@ A GeoAI project for land cover classification using Sentinel-2 multispectral ima
 3.**Confusion Matrix Analysis**:
  -RF struggled with "Highway"(F1=0.548) due to spectral similarity.
  -CNN resolved this (F1=0.926)by extracting spectral similarity.
- -![Confusion Matrix](results/cnn_confusion_matrix.png)
+ -![Confusion Matrix](results/cnn/data_aug/cnn_confusion_matrix.png)
 
 ### Ablation Study & Variance Analysis
 Repeated experiments with/without random seeds and different epochs.
@@ -67,7 +67,7 @@ pip install -r requirements.txt
 1.**随机森林基线**:将影像拉平为53248维向量，OA=82.69%。
 2.**轻量级CNN模型**:自定义3层卷积卷积网络，无增强OA=94.22%,加入数据增强后OA提升至94.91%。
 3.**混淆矩阵分析**:随机森林对公路(Highway)识别较差(F1=0.548)，CNN利用空间纹理特征将F1提升至0.926。
- -![混淆矩阵分析](results/cnn_confusion_matrix.png)
+ -![混淆矩阵分析](results/cnn/data_aug/cnn_confusion_matrix.png)
 
 ### 消融实验与方差分析
 通过改变随机种子和训练轮数进行对照。证实了未固定种子时模型存在最高达3.5%的精度波动；固定种子并增加轮数后，验证了数据增强的有效性。
