@@ -7,7 +7,7 @@
 ## English
 
 ### Project Overview
-A GeoAI project for land cover classification using Sentinel-2 multispectral imagery from the EuroSAT dataset. This repository contains a Random Forest baseline and will be extended with CNN models.
+A GeoAI project for land cover classification using Sentinel-2 multispectral imagery from the EuroSAT dataset. This repository contains a **Random Forest baseline** and **Lightweight CNN model**.
 
 ### Dataset
 - **Source**: EuroSATallBands (Sentinel-2)
@@ -16,20 +16,18 @@ A GeoAI project for land cover classification using Sentinel-2 multispectral ima
 - **Bands**: 13 (including near-infrared and shortwave infrared)
 - **Image size**: 64 × 64 pixels
 
-### Method
-- **Algorithm**: Random Forest (200 trees)
-- **Features**: Each 13×64×64 image flattened into a 53,248-dimensional vector
-- **Evaluation**: Overall Accuracy (OA), confusion matrix, feature importance
+### Method & Results
+1.**Random Forest Baseline**:Flattened 13*64*64 images into 53248-dim vectors,OA=82.69%.
+2.**Lightweight CNN**:Custom 3-layer CNN.OA=94.22%(no aug)->94.91%(data augmentation).
+3.**Confusion Matrix Analysis**:
+ - RF struggled with "Highway"(F1=0.548) due to spectral similarity.
+ - CNN resolved this (F1=0.926)by extracting spectral similarity.
+ - ![Confusion Matrix](results/cnn/data_aug/cnn_confusion_matrix.png)
 
-### Results
-- **Overall Accuracy (OA)**: 0.8269
-- **Key findings**:
-  - Bands 9, 12, and 13 (narrow NIR, SWIR) are the most important.
-  - Highway and Residential are easily confused due to mixed pixels.
-- **Confusion Matrix**:
-  ![Confusion Matrix](results/rf/rf_confusion_matrix.png)
-- **Band Importance**:
-  ![Band Importance](results/rf/rf_band_importance.png)
+### Ablation Study & Variance Analysis
+Repeated experiments with/without random seeds and different epochs.
+- Demonstrated that random initialization causes up to a 3.5% fluctuation in OA.
+- By fixing the random seed and increasing epochs to 20,verified that data augmentation is effective.
 
 ### Environment
 - Python 3.10
@@ -37,24 +35,26 @@ A GeoAI project for land cover classification using Sentinel-2 multispectral ima
 
 ### How to Run
 ```bash
-git clone https://github.com/你的用户名/EuroSAT-GeoAI-Classification.git
+git clone https://github.com/Arcturus6603/EuroSAT-GeoAI-Classification.git
 cd EuroSAT-GeoAI-Classification
 pip install -r requirements.txt
 # Download data and change path
-# The data comes from https://opendatalab.com/OpenDataLab/EuroSAT
+#The data comes from https://opendatalab.com/OpenDataLab/EuroSAT
 ```
 
-### Future Work
-- Add spectral indices (NDVI, NDWI) as extra features.
-- Build CNN models (e.g., ResNet18) with data augmentation.
-- Compare Random Forest and CNN results.
+### Repository Structure
+- 'src/':Source code for data loading,training and evaluation.
+- 'model/':Saved model weights(.pth)
+- 'results/':Confusion matrices,F1-score charts and classification report.
+- 'requirements.txt':Python dependencies.
+
 
 ---
 
 ## 中文
 
 ### 项目简介
-本项目是一个 GeoAI 入门项目，使用 EuroSAT 数据集中的 Sentinel-2 多光谱遥感影像进行地物分类。仓库目前包含随机森林基线模型，后续将扩展 CNN 模型。
+本项目是一个基于Sentinel-2多光谱影像(EuroSAT数据集)的GeoAI地物分类项目，包含**随机森林基线**与**轻量级CNN模型**。
 
 ### 数据集
 - **来源**：EuroSATallBands (Sentinel-2)
@@ -63,20 +63,14 @@ pip install -r requirements.txt
 - **波段数**：13 个（含近红外、短波红外）
 - **影像尺寸**：64 × 64 像素
 
-### 方法
-- **算法**：随机森林（200 棵树）
-- **特征**：将每张 13×64×64 的影像拉平为 53,248 维向量
-- **评估指标**：总体精度（OA）、混淆矩阵、特征重要性
+### 方法与结果
+1.**随机森林基线**:将影像拉平为53248维向量，OA=82.69%。
+2.**轻量级CNN模型**:自定义3层卷积卷积网络，无增强OA=94.22%,加入数据增强后OA提升至94.91%。
+3.**混淆矩阵分析**:随机森林对公路(Highway)识别较差(F1=0.548)，CNN利用空间纹理特征将F1提升至0.926。
+ -![混淆矩阵分析](results/cnn/data_aug/cnn_confusion_matrix.png)
 
-### 结果
-- **总体精度 (OA)**：0.8269
-- **关键发现**：
-  - 第 9、12、13 波段（窄近红外、短波红外）对分类最重要。
-  - 公路与住宅因混合像元问题容易混淆。
-- **混淆矩阵**：
-  ![Confusion Matrix](results/rf/rf_confusion_matrix.png)
-- **波段重要性**：
-  ![Band Importance](results/rf/rf_band_importance.png)
+### 消融实验与方差分析
+通过改变随机种子和训练轮数进行对照。证实了未固定种子时模型存在最高达3.5%的精度波动；固定种子并增加轮数后，验证了数据增强的有效性。
 
 ### 环境依赖
 - Python 3.10
@@ -84,14 +78,15 @@ pip install -r requirements.txt
 
 ### 如何运行
 ```bash
-git clone https://github.com/你的用户名/EuroSAT-GeoAI-Classification.git
+git clone https://github.com/Arcturus6603/EuroSAT-GeoAI-Classification.git
 cd EuroSAT-GeoAI-Classification
 pip install -r requirements.txt
 # 下载数据并修改路径
-# 数据来源于：https://opendatalab.com/OpenDataLab/EuroSAT
+# 数据来源于https://opendatalab.com/OpenDataLab/EuroSAT
 ```
 
-### 未来计划
-- 加入 NDVI、NDWI 等光谱指数作为额外特征。
-- 搭建 CNN 模型（如 ResNet18），并加入数据增强。
-- 对比随机森林和 CNN 的结果。
+### 目录结构
+- 'src.':数据加载、训练与评估的源代码。
+- 'models/':保存的模型权重文件(.pth)
+- 'results/':混淆矩阵、F1分数表及分类报告。
+- 'requirements.txt':环境依赖。
