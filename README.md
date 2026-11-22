@@ -26,8 +26,8 @@ A GeoAI project for land cover classification using Sentinel-2 multispectral ima
 
 ### Ablation Study & Variance Analysis
 Repeated experiments with/without random seeds and different epochs.
- -Demonstrated that random initialization causes up to a 3.5% fluctuation in OA.
- -By fixing the random seed and increasing epochs to 20,verified that data augmentation is effective.
+-Demonstrated that random initialization causes up to a 3.5% fluctuation in OA.
+-By fixing the random seed and increasing epochs to 20,verified that data augmentation is effective.
 
 ### Environment
 - Python 3.10
@@ -43,10 +43,10 @@ pip install -r requirements.txt
 ```
 
 ### Repository Structure
- -'src/':Source code for data loading,training and evaluation.
- -'model/':Saved model weights(.pth)
- -'results/':Confusion matrices,F1-score charts and classification report.
- -'requirements.txt':Python dependencies.
+-'src/':Source code for data loading,training and evaluation.
+-'model/':Saved model weights(.pth)
+-'results/':Confusion matrices,F1-score charts and classification report.
+-'requirements.txt':Python dependencies.
 
 
 ---
@@ -86,7 +86,7 @@ pip install -r requirements.txt
 ```
 
 ### 目录结构
- -'src.':数据加载、训练与评估的源代码。
- -'models/':保存的模型权重文件(.pth)
- -'results/':混淆矩阵、F1分数表及分类报告。
- -'requirements.txt':环境依赖。
+-'src.':数据加载、训练与评估的源代码。
+-'models/':保存的模型权重文件(.pth)
+-'results/':混淆矩阵、F1分数表及分类报告。
+-'requirements.txt':环境依赖。
