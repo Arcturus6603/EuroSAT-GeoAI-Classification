@@ -17,9 +17,9 @@ A GeoAI project for land cover classification using Sentinel-2 multispectral ima
 - **Image size**: 64 × 64 pixels
 
 ### Method & Results
-## 1.**Random Forest Baseline**:Flattened 13*64*64 images into 53248-dim vectors,OA=82.69%.
-## 2.**Lightweight CNN**:Custom 3-layer CNN.OA=94.22%(no aug)->94.91%(data augmentation).
-## 3.**Confusion Matrix Analysis**:
+1.**Random Forest Baseline**:Flattened 13*64*64 images into 53248-dim vectors,OA=82.69%.
+2.**Lightweight CNN**:Custom 3-layer CNN.OA=94.22%(no aug)->94.91%(data augmentation).
+3.**Confusion Matrix Analysis**:
  - RF struggled with "Highway"(F1=0.548) due to spectral similarity.
  - CNN resolved this (F1=0.926)by extracting spectral textures.
  - ![Confusion Matrix](results/cnn/data_aug/cnn_confusion_matrix.png)
