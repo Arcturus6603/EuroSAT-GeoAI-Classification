@@ -19,7 +19,7 @@ A GeoAI project for land cover classification using Sentinel-2 multispectral ima
 ### Method & Results
 1.**Random Forest Baseline**:Flattened 13*64*64 images into 53248-dim vectors,OA=82.69%.\
 2.**Lightweight CNN**:Custom 3-layer CNN.OA=94.22%(no aug)->94.91%(data augmentation).\
-3.**Confusion Matrix Analysis**:\
+3.**Confusion Matrix Analysis**:
  - RF struggled with "Highway"(F1=0.548) due to spectral similarity.
  - CNN resolved this (F1=0.926)by extracting spectral textures.
  - ![Confusion Matrix](results/cnn/data_aug/cnn_confusion_matrix.png)
@@ -64,8 +64,8 @@ pip install -r requirements.txt
 - **影像尺寸**：64 × 64 像素
 
 ### 方法与结果
-1.**随机森林基线**:将影像拉平为53248维向量，OA=82.69%。
-2.**轻量级CNN模型**:自定义3层卷积卷积网络，无增强OA=94.22%,加入数据增强后OA提升至94.91%。
+1.**随机森林基线**:将影像拉平为53248维向量，OA=82.69%。\
+2.**轻量级CNN模型**:自定义3层卷积卷积网络，无增强OA=94.22%,加入数据增强后OA提升至94.91%。\
 3.**混淆矩阵分析**:随机森林对公路(Highway)识别较差(F1=0.548)，CNN利用空间纹理特征将F1提升至0.926。
  -![混淆矩阵分析](results/cnn/data_aug/cnn_confusion_matrix.png)
 
